@@ -27,7 +27,7 @@ app.post("/insert", async (req, res) => {
         console.log("DATA INSERTED");
     } catch (error) {
         console.log(error);
-        alert(error);
+        // alert(error);
     }
 })
 
@@ -38,6 +38,7 @@ app.get("/address", async (req, res) => {
             res.send(err);
         } else {
             res.send(result);
+            console.log(result);
         }
     })
     .sort({ userName: 1 });
