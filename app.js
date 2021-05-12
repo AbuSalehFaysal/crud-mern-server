@@ -10,13 +10,12 @@ const AddressModel = require("./models/Address")
 app.use(express.json());
 app.use(cors());
 
-mongoose.set("useNewUrlParser", true);
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
-mongoose.set("useUnifiedTopology", true);
+
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster-crud-mern.x2kp6.mongodb.net/${process.env.DB_NAME}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
 });
 
 app.post("/insert", async (req, res) => {
@@ -32,7 +31,7 @@ app.post("/insert", async (req, res) => {
     }
 })
 
-app.get("/address", (req, res) => {
+app.get("/address", async (req, res) => {
     
     AddressModel.find({}, (err, result) => {
         if (err) {
