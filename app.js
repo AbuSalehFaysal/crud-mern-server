@@ -32,7 +32,7 @@ app.post("/insert", async (req, res) => {
     }
 })
 
-app.get("/address", async (req, res) => {
+app.get("/address", (req, res) => {
     
     AddressModel.find({}, (err, result) => {
         if (err) {
